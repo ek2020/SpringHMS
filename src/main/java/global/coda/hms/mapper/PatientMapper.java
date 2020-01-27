@@ -56,7 +56,7 @@ public interface PatientMapper {
 	@Options(useGeneratedKeys = true,keyProperty = "pkPatientId",keyColumn = "pk_patient")
 	int createPatient(Patient patient);
 	 /**
-     * Update user record.
+     * Update user record for the given patients
      *
      * @param patient the patient
      * @return the boolean
