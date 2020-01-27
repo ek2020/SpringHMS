@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Default suite]">
+  <test name="Default test(failed)">
+    <classes>
+      <class name="global.coda.hms.test.JPAUnitTest">
+        <methods>
+          <include name="springTestContextBeforeTestClass"/>
+          <include name="springTestContextPrepareTestInstance"/>
+          <include name="springTestContextAfterTestClass"/>
+          <include name="setup"/>
+          <include name="springTestContextBeforeTestMethod"/>
+          <include name="testUser"/>
+          <include name="springTestContextAfterTestMethod"/>
+        </methods>
+      </class> <!-- global.coda.hms.test.JPAUnitTest -->
+    </classes>
+  </test> <!-- Default test(failed) -->
+</suite> <!-- Failed suite [Default suite] -->
