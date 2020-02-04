@@ -95,6 +95,22 @@ public class PatientController {
         LOGGER.traceExit(patient);
         return responseEntity;
 	}
+	 /**
+     * Gets patient by their userName
+     *
+     * @param id the id
+     * @return the patient record
+     */
+	@GetMapping("/read/{name}")
+	public CustomResponse<Patient> getPatientById(@PathVariable("name") String name) {
+		LOGGER.traceEntry();
+		CustomResponse<Patient> responseEntity = new CustomResponse<>();
+        Patient patient = service.getByName(name);
+        responseEntity.setData(patient);
+        responseEntity.setStatusCode(Response.SC_OK);
+        LOGGER.traceExit(patient);
+        return responseEntity;
+	}
 
 	/**
      * Create patient 
@@ -105,12 +121,12 @@ public class PatientController {
 	@PostMapping("/create")
 	public CustomResponse<Boolean> createPatient(@RequestBody Patient patient) {
         LOGGER.traceEntry();
-        CustomResponse<Boolean> responseEntity = new CustomResponse<>();
-        boolean result = service.updatePatient(patient);
-        responseEntity.setStatusCode(Response.SC_OK);
-        responseEntity.setData(result);
+        CustomResponse<Boolean> customResponse = new CustomResponse<>();
+        boolean result = service.createPatient(patient);
+        customResponse.setStatusCode(Response.SC_OK);
+        customResponse.setData(result);
         LOGGER.traceExit(patient);
-        return responseEntity;
+        return customResponse;
     }
 	
 	

@@ -37,6 +37,14 @@ public interface PatientMapper {
 	@Select("select * from t_user_details join t_patient on t_user_details.pk_user_id=t_patient.fk_user_id where fk_user_id=#{id}")
 	Patient getById(int id);
 	/**
+     * Gets patient by name.
+     *
+     * @param name
+     * @return the patient record
+     */
+	@Select("select * from t_user_details where t_user_details.username=#{name}")
+	Patient getByName(String name);
+	/**
      * Create user record.
      *
      * @param patient the patient
@@ -54,7 +62,7 @@ public interface PatientMapper {
      */
 	@Insert("insert into t_patient(blood_group,weight,fk_user_id,fk_doctor_id) values(#{bloodGroup},#{weight},#{pkUserId},102)")
 	@Options(useGeneratedKeys = true,keyProperty = "pkPatientId",keyColumn = "pk_patient")
-	int createPatient(Patient patient);
+	boolean createPatient(Patient patient);
 	 /**
      * Update user record for the given patients
      *
@@ -62,7 +70,7 @@ public interface PatientMapper {
      * @return the boolean
      */
 	
-	@Update("update hms.t_user_details set hms.t_user_details.username = #{patient.userName},hms.t_user_details.password = #{patient.password},hms.t_user_details.firstname=#{patient.firstName},hms.t_user_details.lastname=#{patient.lastName},hms.t_user_details.fk_role_id = 1,hms.t_user_details.city=#{patient.city},hms.t_user_details.state=#{patient.state},hms.t_user_details.phone_number = #{patient.phoneNumber} where hms.t_user_details.pk_user_id=#{id} and hms.t_user_details.is_active=1")
+	@Update("update hms.t_user_details set hms.t_user_details.username = #{patient.userName},hms.t_user_details.password = #{patient.password},hms.t_user_details.firstname=#{patient.firstName},hms.t_user_details.lastname=#{patient.lastName},hms.t_user_details.fk_role_id = 101,hms.t_user_details.city=#{patient.city},hms.t_user_details.state=#{patient.state},hms.t_user_details.phone_number = #{patient.phoneNumber} where hms.t_user_details.pk_user_id=#{id} and hms.t_user_details.is_active=1")
 	boolean updateUser(Patient patient,int id);
 	/**
      * Update patient record.
@@ -78,7 +86,7 @@ public interface PatientMapper {
      * @param id the id
      * @return the boolean
      */
-	@Delete("update hms.t_patient set hms.t_patient.is_active=0 where hms.t_patient.fk_user_id = 201")
+	@Delete("update hms.t_patient set hms.t_patient.is_active=0 where hms.t_patient.fk_user_id =#{id}")
 	boolean deletePatientById(int id);
 	/**
      * Delete patient record.
@@ -86,7 +94,7 @@ public interface PatientMapper {
      * @param id the id
      * @return the boolean
      */
-	@Delete("update hms.t_user_details set hms.t_user_details.is_active=0 where hms.t_user_details.pk_user_id = 201")
+	@Delete("update hms.t_user_details set hms.t_user_details.is_active=0 where hms.t_user_details.pk_user_id = #{id}")
 	boolean deleteUserbyId(int id);
 	
 } 

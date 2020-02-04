@@ -57,6 +57,19 @@ public class PatientService {
 		 LOGGER.traceExit(patient);
 		 return patient;
 	}
+	
+	/**
+     * Gets patient by name
+     *
+     * @param id the name
+     * @return the patient
+     */
+	public Patient getByName(String name) {
+		LOGGER.traceEntry();
+		 Patient patient =  mapper.getByName(name);
+		 LOGGER.traceExit(patient);
+		 return patient;
+	}
 
 	/**
 	 * Create patient record.
@@ -64,19 +77,19 @@ public class PatientService {
 	 * @param patient the patient
 	 * @return the int
 	 */
-	public int createPatient(Patient patient) {
+	public boolean createPatient(Patient patient) {
 		LOGGER.traceEntry();
+		LOGGER.info("service");
 		boolean userResult = false;
-		int patientResult = -1;
+		boolean patientResult = false;
 		userResult = mapper.createUser(patient);
 		patientResult = mapper.createPatient(patient);
 		LOGGER.traceExit(patient);
-		if (userResult && patientResult > 0) {
-			return patientResult;
+		if (userResult && patientResult ) {
+			return true;
 
 		}
-
-		return -1;
+		return false;
 
 	}
 
@@ -116,5 +129,6 @@ public class PatientService {
 		}
 		return false;
 	}
+	
 
 }

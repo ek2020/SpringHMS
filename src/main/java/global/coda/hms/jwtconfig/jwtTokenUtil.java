@@ -1,6 +1,6 @@
 package global.coda.hms.jwtconfig;
 
-public class jwtTokenUtil {
+public class jwtTokenUtil  {
 	
 
 }
