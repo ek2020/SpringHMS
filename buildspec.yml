@@ -7,9 +7,9 @@ phases:
   post_build:
     commands:
       - mvn package
-      - mv target/my-web-app.war my-web-app.war
+      - mv target/SpringHMS-0.0.1-SNAPSHOT.war SpringHMS-0.0.1-SNAPSHOT.war
 artifacts:
   files:
-    - my-web-app.war
+    - SpringHMS-0.0.1-SNAPSHOT.war
     - .ebextensions/**/*
-  base-directory: 'target/my-web-app'
+  base-directory: 'target/SpringHMS-0.0.1-SNAPSHOT.war'
