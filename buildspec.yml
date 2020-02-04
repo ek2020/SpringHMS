@@ -7,7 +7,7 @@ phases:
   post_build:
     commands:
       - mvn package
-      - mv target/SpringHMS-0.0.1-SNAPSHOT.jar SpringHMS-0.0.1-SNAPSHOT.jar
+      - mv target/*.jar SpringHMS-0.0.1-SNAPSHOT.jar
 artifacts:
   files:
     - SpringHMS-0.0.1-SNAPSHOT.jar
